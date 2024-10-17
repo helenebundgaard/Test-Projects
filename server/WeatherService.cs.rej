@@ -1,0 +1,10 @@
+diff a/server/WeatherService.cs b/server/WeatherService.cs	(rejected hunks)
+@@ -6,7 +6,7 @@
+ {
+     public class WeatherService
+     {
+-        public string GetWeather(string location)
++        public virtual string GetWeather(string location)
+         {
+             // Simulate fetching weather data for the location
+             // In a real-world scenario, you might call an external weather API here

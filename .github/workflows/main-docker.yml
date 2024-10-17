@@ -1,0 +1,23 @@
+name: Docker build and deploy
+
+on:
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      name: Checkout code
+
+    - uses: mr-smithers-excellent/docker-build-push@v6
+      name: Build & push docker image
+      with:
+        image: lemonlama/personal-assistent
+        tags: v1, latest
+        registry: docker.io
+        dockerfile: server/Dockerfile
+        directory: server/
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
